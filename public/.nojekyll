@@ -1,0 +1,2 @@
+# This file tells GitHub Pages not to run Jekyll on the exported files.
+# It ensures that folders starting with underscores (like /_next/) are served correctly.
