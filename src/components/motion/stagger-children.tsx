@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ReactNode } from "react";
 
 interface StaggerChildrenProps {
@@ -14,18 +14,20 @@ export function StaggerChildren({
   className,
   staggerDelay = 0.1,
 }: StaggerChildrenProps) {
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: staggerDelay,
+      },
+    },
+  };
+
   return (
     <motion.div
       initial="hidden"
       animate="visible"
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: staggerDelay,
-          },
-        },
-      }}
+      variants={containerVariants}
       className={className}
     >
       {children}
@@ -33,11 +35,11 @@ export function StaggerChildren({
   );
 }
 
-export const staggerItem = {
+export const staggerItem: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] },
+    transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] as const },
   },
 };
