@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const links = [
   { label: "About", href: "#about" },
@@ -37,16 +38,23 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Mobile toggle */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
+
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+
+          {/* Mobile toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+        </div>
       </nav>
 
       {/* Mobile menu */}

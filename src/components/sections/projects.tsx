@@ -37,7 +37,7 @@ export function Projects() {
             const Icon = iconMap[project.icon] ?? Code;
             return (
               <motion.div key={project.title} variants={staggerItem}>
-                <Card className="group relative h-full overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:neon-glow">
+                <Card className="group relative h-full overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:neon-glow">
                   {/* Gradient accent */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}

@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/motion/fade-in";
 import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedCounter } from "@/components/motion/animated-counter";
 
 const stats = [
-  { label: "Projects Shipped", value: "30+" },
-  { label: "Years Experience", value: "1+" },
-  { label: "Models Trained", value: "100+" },
+  { label: "Projects Shipped", value: 30, suffix: "+" },
+  { label: "Years Experience", value: 1, suffix: "+" },
+  { label: "Models Trained", value: 100, suffix: "+" },
 ];
 
 export function About() {
@@ -26,7 +27,7 @@ export function About() {
           {/* Image + Terminal */}
           <FadeIn direction="left">
             <div className="space-y-6">
-              <div className="relative overflow-hidden rounded-2xl border border-border/50 neon-glow">
+              <div className="relative overflow-hidden rounded-2xl border border-border/50 neon-glow transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1607706189992-eae578626c86?w=600&h=600&fit=crop&crop=center"
                   alt="Aaabad Touk"
@@ -38,7 +39,7 @@ export function About() {
               </div>
 
               {/* Terminal block */}
-              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <CardContent className="p-4">
                   <div className="mb-3 flex items-center gap-2">
                     <div className="h-3 w-3 rounded-full bg-red-500/70" />
@@ -99,10 +100,10 @@ $ echo $STATUS
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
                   >
-                    <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+                    <Card className="border-border/50 bg-card/50 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
                       <CardContent className="p-4 text-center">
                         <p className="text-2xl font-bold gradient-text">
-                          {stat.value}
+                          <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                         </p>
                         <p className="mt-1 text-xs font-mono text-muted-foreground">
                           {stat.label}

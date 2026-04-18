@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Download, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/ui/icons";
 import { buttonVariants } from "@/components/ui/button";
@@ -13,10 +13,15 @@ const resumeDownloadUrl =
   "https://drive.google.com/uc?export=download&id=1Xweygst85ufLx0ES3yOazcFZwUpRYDHP";
 
 export function Hero() {
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 600], [0, 90]);
+  const orbOneY = useTransform(scrollY, [0, 600], [0, -50]);
+  const orbTwoY = useTransform(scrollY, [0, 600], [0, 60]);
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-16">
       {/* Background image */}
-      <div className="pointer-events-none absolute inset-0">
+      <motion.div className="pointer-events-none absolute inset-0" style={{ y: backgroundY }}>
         <Image
           src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&q=80&fit=crop"
           alt=""
@@ -25,12 +30,18 @@ export function Hero() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
-      </div>
+      </motion.div>
 
       {/* Gradient orbs */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-[120px]" />
+        <motion.div
+          style={{ y: orbOneY }}
+          className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]"
+        />
+        <motion.div
+          style={{ y: orbTwoY }}
+          className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-[120px]"
+        />
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -79,6 +90,23 @@ export function Hero() {
           engineering — from multimodal AI pipelines to Hybrid RAG systems.
         </motion.p>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="mb-10 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-muted-foreground"
+        >
+          <span className="rounded-full border border-border/50 bg-secondary/40 px-3 py-1 backdrop-blur-sm">
+            AI systems
+          </span>
+          <span className="rounded-full border border-border/50 bg-secondary/40 px-3 py-1 backdrop-blur-sm">
+            Backend engineering
+          </span>
+          <span className="rounded-full border border-border/50 bg-secondary/40 px-3 py-1 backdrop-blur-sm">
+            Hybrid RAG
+          </span>
+        </motion.div>
+
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,24 +114,21 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
-          <a
-            href="#projects"
-            className={cn(buttonVariants({ size: "lg" }), "neon-glow")}
-          >
+          <a href="#projects" className={cn(buttonVariants({ size: "lg" }), "neon-glow transition-transform duration-200 hover:-translate-y-0.5")}> 
             View Projects
           </a>
           <a
             href={resumeViewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "lg" })}
+            className={buttonVariants({ variant: "outline", size: "lg" }) + " transition-transform duration-200 hover:-translate-y-0.5"}
           >
             <FileText className="mr-2 h-4 w-4" />
             View Resume
           </a>
           <a
             href={resumeDownloadUrl}
-            className={buttonVariants({ variant: "secondary", size: "lg" })}
+            className={buttonVariants({ variant: "secondary", size: "lg" }) + " transition-transform duration-200 hover:-translate-y-0.5"}
             download="Abdullah_Kaisar_Fardin_Resume.pdf"
           >
             <Download className="mr-2 h-4 w-4" />
@@ -111,7 +136,7 @@ export function Hero() {
           </a>
           <a
             href="#contact"
-            className={buttonVariants({ variant: "outline", size: "lg" })}
+            className={buttonVariants({ variant: "outline", size: "lg" }) + " transition-transform duration-200 hover:-translate-y-0.5"}
           >
             Get in Touch
           </a>
@@ -153,7 +178,7 @@ export function Hero() {
         >
           <a
             href="#about"
-            className="inline-flex flex-col items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex flex-col items-center gap-2 text-xs text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:text-foreground"
           >
             <span className="font-mono">scroll</span>
             <motion.div

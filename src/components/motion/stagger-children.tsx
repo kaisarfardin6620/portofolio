@@ -16,9 +16,10 @@ export function StaggerChildren({
 }: StaggerChildrenProps) {
   return (
     <motion.div
-      initial="visible"
+      initial="hidden"
       animate="visible"
       variants={{
+        hidden: {},
         visible: {
           transition: {
             staggerChildren: staggerDelay,
@@ -33,10 +34,10 @@ export function StaggerChildren({
 }
 
 export const staggerItem = {
-  hidden: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] },
   },
 };
