@@ -2,10 +2,15 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/ui/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+const resumeViewUrl =
+  "https://drive.google.com/file/d/1Xweygst85ufLx0ES3yOazcFZwUpRYDHP/view?usp=sharing";
+const resumeDownloadUrl =
+  "https://drive.google.com/uc?export=download&id=1Xweygst85ufLx0ES3yOazcFZwUpRYDHP";
 
 export function Hero() {
   return (
@@ -86,6 +91,23 @@ export function Hero() {
             className={cn(buttonVariants({ size: "lg" }), "neon-glow")}
           >
             View Projects
+          </a>
+          <a
+            href={resumeViewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({ variant: "outline", size: "lg" })}
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            View Resume
+          </a>
+          <a
+            href={resumeDownloadUrl}
+            className={buttonVariants({ variant: "secondary", size: "lg" })}
+            download="Abdullah_Kaisar_Fardin_Resume.pdf"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download Resume
           </a>
           <a
             href="#contact"
