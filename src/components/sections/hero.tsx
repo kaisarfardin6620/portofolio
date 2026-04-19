@@ -8,9 +8,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const resumeViewUrl =
-  "https://drive.google.com/file/d/1Xweygst85ufLx0ES3yOazcFZwUpRYDHP/view?usp=sharing";
+  "https://drive.google.com/file/d/1B3NntqRjhiJDoTCi8ttFdlee674EhyMw/view?usp=sharing";
 const resumeDownloadUrl =
-  "https://drive.google.com/uc?export=download&id=1Xweygst85ufLx0ES3yOazcFZwUpRYDHP";
+  "https://drive.google.com/uc?export=download&id=1B3NntqRjhiJDoTCi8ttFdlee674EhyMw";
 
 export function Hero() {
   const { scrollY } = useScroll();
