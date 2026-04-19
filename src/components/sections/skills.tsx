@@ -26,8 +26,16 @@ export function Skills() {
         <div className="grid gap-6 md:grid-cols-3">
           {skillCategories.map((cat, catIndex) => {
             const Icon = iconMap[cat.icon] ?? Brain;
+            const isSingleCardInLastRow =
+              skillCategories.length % 3 === 1 &&
+              catIndex === skillCategories.length - 1;
+
             return (
-              <FadeIn key={cat.category} delay={catIndex * 0.15}>
+              <FadeIn
+                key={cat.category}
+                delay={catIndex * 0.15}
+                className={isSingleCardInLastRow ? "md:col-start-2" : undefined}
+              >
                 <Card className="h-full border-border/50 bg-card/50 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <div className="mb-6 flex items-center gap-3">
