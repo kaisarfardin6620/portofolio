@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Download, FileText } from "lucide-react";
+import { ArrowDown, Download, FileText, ShieldCheck, Zap, ChartNoAxesCombined } from "lucide-react";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/ui/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -44,7 +44,8 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div className="text-left">
         {/* Status badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +65,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+          className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
         >
           <span className="gradient-text">Abdullah Kaisar Fardin</span>
         </motion.h1>
@@ -74,7 +75,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6 font-mono text-xs tracking-wider text-muted-foreground sm:text-sm"
+          className="mb-5 font-mono text-xs tracking-wider text-muted-foreground sm:text-sm"
         >
           @kaisarfardin6620
         </motion.p>
@@ -84,17 +85,25 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mx-auto mb-8 max-w-3xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          className="mb-3 max-w-3xl text-balance text-xl leading-tight text-foreground sm:text-2xl"
         >
-          AI Developer specializing in Generative AI systems and scalable backend
-          engineering — from multimodal AI pipelines to Hybrid RAG systems.
+          Designing <span className="text-primary">production-grade AI systems</span> that combine research depth with shipping speed.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.33 }}
+          className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base"
+        >
+          I build scalable backend architecture for multimodal AI, Hybrid RAG, and real-time streaming products. Focused on reliability, latency, and measurable product outcomes.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mb-10 flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-muted-foreground sm:gap-3"
+          className="mb-10 flex flex-wrap items-center gap-2 text-xs font-mono text-muted-foreground sm:gap-3"
         >
           <span className="rounded-full border border-border/50 bg-secondary/40 px-3 py-1 backdrop-blur-sm">
             AI systems
@@ -112,7 +121,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+          className="flex flex-wrap items-center gap-3 sm:gap-4"
         >
           <a href="#projects" className={cn(buttonVariants({ size: "lg" }), "neon-glow transition-transform duration-200 hover:-translate-y-0.5")}> 
             View Projects
@@ -168,13 +177,57 @@ export function Hero() {
             </a>
           </div>
         </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="rounded-2xl border border-border/60 bg-card/55 p-6 backdrop-blur-xl"
+        >
+          <p className="mb-4 font-mono text-xs tracking-wider text-primary uppercase">
+            case-study snapshot
+          </p>
+
+          <div className="space-y-3">
+            <div className="rounded-xl border border-border/60 bg-background/60 p-4">
+              <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
+                <Zap className="h-4 w-4 text-primary" />
+                Real-time Delivery
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Built streaming AI backends using WebSockets and async workers for low-latency user interactions.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border/60 bg-background/60 p-4">
+              <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
+                <ShieldCheck className="h-4 w-4 text-primary" />
+                Reliability First
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Prioritized resilient architecture, queue-based processing, and robust API safeguards.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border/60 bg-background/60 p-4">
+              <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
+                <ChartNoAxesCombined className="h-4 w-4 text-primary" />
+                Outcome Focus
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Delivered production features with clear impact across retrieval quality, concurrency, and user experience.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="mt-14"
+          className="mt-4 flex justify-center lg:col-span-2 lg:mt-8"
         >
           <a
             href="#about"
