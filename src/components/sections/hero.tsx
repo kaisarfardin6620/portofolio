@@ -9,9 +9,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const resumeViewUrl =
-  "https://drive.google.com/file/d/1B3NntqRjhiJDoTCi8ttFdlee674EhyMw/view?usp=sharing";
+  "https://drive.google.com/file/d/1ofq-OZH2lIBNVz7-DupjTKu2UtklS6Lx/view?usp=sharing";
 const resumeDownloadUrl =
-  "https://drive.google.com/uc?export=download&id=1B3NntqRjhiJDoTCi8ttFdlee674EhyMw";
+  "https://drive.google.com/uc?export=download&id=1ofq-OZH2lIBNVz7-DupjTKu2UtklS6Lx";
 
 const cinematicPhrases = [
   "real-time AI products",
