@@ -41,36 +41,50 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pb-10 pt-24 md:pt-28">
-      {/* Background image */}
-      <motion.div className="pointer-events-none absolute inset-0" style={{ y: backgroundY }}>
+    <section className="relative min-h-screen overflow-hidden px-6 pb-20 pt-32 md:pt-40">
+      {/* Background image container */}
+      <motion.div 
+        className="pointer-events-none absolute inset-0 z-[-1] h-full w-full overflow-hidden" 
+        style={{ y: backgroundY }}
+      >
         <Image
           src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&q=80&fit=crop"
           alt=""
           fill
-          className="object-cover opacity-15"
+          className="object-cover opacity-[0.22] mix-blend-soft-light"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
       </motion.div>
+
 
       {/* Cinematic light layers */}
       <div className="pointer-events-none absolute inset-0">
         <motion.div
-          animate={{ opacity: [0.2, 0.4, 0.25], scale: [1, 1.08, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[-18%] top-[-12%] h-[36rem] w-[36rem] rounded-full bg-cyan-400/10 blur-[120px]"
+          animate={{ 
+            opacity: [0.15, 0.3, 0.18], 
+            scale: [1, 1.1, 1],
+            x: [0, 20, 0],
+            y: [0, -30, 0]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[-18%] top-[-12%] h-[40rem] w-[40rem] rounded-full bg-cyan-400/10 blur-[130px]"
         />
         <motion.div
-          animate={{ opacity: [0.2, 0.38, 0.22], scale: [1.04, 1, 1.05] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-          className="absolute right-[-15%] top-[6%] h-[34rem] w-[34rem] rounded-full bg-violet-500/10 blur-[120px]"
+          animate={{ 
+            opacity: [0.18, 0.35, 0.2], 
+            scale: [1.05, 1, 1.05],
+            x: [0, -40, 0],
+            y: [0, 20, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute right-[-15%] top-[6%] h-[38rem] w-[38rem] rounded-full bg-violet-500/10 blur-[130px]"
         />
+
         <div
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, hsl(var(--primary)/0.20) 0, transparent 40%), radial-gradient(circle at 80% 70%, hsl(var(--primary)/0.15) 0, transparent 42%)",
+            backgroundImage: "radial-gradient(circle at 50% 50%, hsl(var(--primary)/0.15) 0%, transparent 50%)",
           }}
         />
       </div>
@@ -78,16 +92,28 @@ export function Hero() {
       {/* Gradient orbs */}
       <div className="pointer-events-none absolute inset-0">
         <motion.div
-          style={{ y: orbOneY }}
-          className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]"
+          animate={{ 
+            y: [0, 40, 0],
+            x: [0, -20, 0],
+            opacity: [0.1, 0.15, 0.1]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-1/4 top-1/4 h-[30rem] w-[30rem] rounded-full bg-cyan-500/10 blur-[130px]"
         />
         <motion.div
-          style={{ y: orbTwoY }}
-          className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-[120px]"
+          animate={{ 
+            y: [0, -50, 0],
+            x: [0, 30, 0],
+            opacity: [0.08, 0.12, 0.08]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/4 right-1/4 h-[30rem] w-[30rem] rounded-full bg-purple-500/10 blur-[130px]"
         />
+
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
+
         <div className="text-left">
         {/* Status badge */}
         <motion.div
@@ -104,14 +130,10 @@ export function Hero() {
         </motion.div>
 
         {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
-        >
+        <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
           <TextReveal text="Abdullah Kaisar Fardin" className="gradient-text" />
-        </motion.h1>
+        </h1>
+
 
 
         {/* Handle */}
@@ -125,13 +147,11 @@ export function Hero() {
         </motion.p>
 
         {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-3 max-w-3xl text-balance text-xl leading-tight text-foreground sm:text-2xl"
-        >
-          Designing <span className="text-primary">production-grade AI systems</span> for{" "}
+        <div className="mb-3 max-w-3xl text-balance text-xl leading-tight text-foreground sm:text-2xl">
+          <TextReveal 
+            text="Designing production-grade AI systems for " 
+            delay={0.15} 
+          />
           <motion.span
             key={phraseIndex}
             initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
@@ -141,17 +161,19 @@ export function Hero() {
           >
             {cinematicPhrases[phraseIndex]}
           </motion.span>
-          .
-        </motion.p>
+          <TextReveal text="." delay={0.4} />
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.33 }}
-          className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base"
-        >
-          I build scalable backend architecture for multimodal AI, Hybrid RAG, and real-time streaming products. Focused on reliability, latency, and measurable product outcomes.
-        </motion.p>
+
+
+        <div className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <TextReveal 
+            text="I build scalable backend architecture for multimodal AI, Hybrid RAG, and real-time streaming products. Focused on reliability, latency, and measurable product outcomes." 
+            delay={0.25} 
+          />
+        </div>
+
+
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

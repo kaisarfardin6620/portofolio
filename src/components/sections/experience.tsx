@@ -20,7 +20,10 @@ export function Experience() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-purple-500/50 to-transparent md:left-1/2 md:-translate-x-px" />
+          {/* Luminous Neon Timeline Path */}
+          <div className="absolute left-[18px] top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-primary to-transparent opacity-30 blur-[2px] md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-primary to-transparent md:left-1/2 md:-translate-x-px" />
+
 
           <div className="space-y-12">
             {experiences.map((exp, i) => (

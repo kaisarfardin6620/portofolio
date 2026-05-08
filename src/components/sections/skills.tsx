@@ -88,15 +88,18 @@ export function Skills() {
           {skillCategories.map((cat, catIndex) => {
             const Icon = iconMap[cat.icon] ?? Brain;
             const RowIcon = rowIconMap[cat.icon] ?? Sparkles;
-            const isSingleCardInLastRow =
-              skillCategories.length % 3 === 1 &&
-              catIndex === skillCategories.length - 1;
+            
+            // Bento logic: AI (0) spans 2, Backend (1) spans 1, Data (2) spans 1, MLOps (3) spans 2
+            const spanClass = 
+              catIndex === 0 ? "md:col-span-2" :
+              catIndex === 3 ? "md:col-span-2" :
+              "md:col-span-1";
 
             return (
               <FadeIn
                 key={cat.category}
                 delay={catIndex * 0.15}
-                className={isSingleCardInLastRow ? "md:col-start-2" : undefined}
+                className={spanClass}
               >
                   <MagicBorder className="h-full">
                     <Card className="floating-glass-card group relative h-full overflow-hidden transition-transform duration-300">
@@ -119,7 +122,7 @@ export function Skills() {
                       </div>
                     </div>
 
-                    <div className="mt-1 space-y-3.5">
+                    <div className={`mt-1 grid gap-x-6 gap-y-3.5 ${catIndex === 0 || catIndex === 3 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
                       {cat.skills.map((skill, skillIndex) => (
                         <motion.div
                           key={skill.name}
@@ -198,6 +201,7 @@ export function Skills() {
             );
           })}
         </div>
+
       </div>
     </section>
   );
