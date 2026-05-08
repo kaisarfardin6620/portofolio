@@ -25,7 +25,7 @@ export function TextReveal({ text, className = "", delay = 0 }: TextRevealProps)
       y: 0,
       filter: "blur(0px)",
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 15,
         stiffness: 120,
       },
@@ -35,12 +35,13 @@ export function TextReveal({ text, className = "", delay = 0 }: TextRevealProps)
       y: 25,
       filter: "blur(8px)",
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 15,
         stiffness: 120,
       },
     },
-  };
+  } as const;
+
 
 
   return (
