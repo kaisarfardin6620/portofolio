@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/motion/fade-in";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedCounter } from "@/components/motion/animated-counter";
+import { MagicBorder } from "@/components/motion/magic-border";
 
 const stats = [
   { label: "Projects Shipped", value: 30, suffix: "+" },
@@ -39,22 +40,23 @@ export function About() {
               </div>
 
               {/* Terminal block */}
-              <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
-                <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 opacity-80" />
-                <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
+              <MagicBorder>
+                <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300">
+                  <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 opacity-80" />
+                  <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
 
-                <CardContent className="relative p-4">
-                  <div className="mb-3 flex items-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-red-500/70" />
-                    <div className="h-3 w-3 rounded-full bg-yellow-500/70" />
-                    <div className="h-3 w-3 rounded-full bg-green-500/70" />
-                    <span className="ml-2 font-mono text-xs text-muted-foreground">
-                      terminal
-                    </span>
-                  </div>
-                  <pre className="font-mono text-xs leading-relaxed text-muted-foreground">
-                    <code>
-                      {`$ whoami
+                  <CardContent className="relative p-4">
+                    <div className="mb-3 flex items-center gap-2">
+                      <div className="h-3 w-3 rounded-full bg-red-500/70" />
+                      <div className="h-3 w-3 rounded-full bg-yellow-500/70" />
+                      <div className="h-3 w-3 rounded-full bg-green-500/70" />
+                      <span className="ml-2 font-mono text-xs text-muted-foreground">
+                        terminal
+                      </span>
+                    </div>
+                    <pre className="font-mono text-xs leading-relaxed text-muted-foreground">
+                      <code>
+                        {`$ whoami
 > fardin_kaisar
 
 $ cat skills.txt
@@ -63,10 +65,11 @@ $ cat skills.txt
 
 $ echo $STATUS
 > building intelligent systems`}
-                    </code>
-                  </pre>
-                </CardContent>
-              </Card>
+                      </code>
+                    </pre>
+                  </CardContent>
+                </Card>
+              </MagicBorder>
             </div>
           </FadeIn>
 

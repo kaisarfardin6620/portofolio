@@ -7,6 +7,10 @@ import { ArrowDown, Download, FileText, ShieldCheck, Zap, ChartNoAxesCombined } 
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/ui/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Magnetic } from "@/components/motion/magnetic";
+import { TextReveal } from "@/components/motion/text-reveal";
+import { MagicBorder } from "@/components/motion/magic-border";
+
 
 const resumeViewUrl =
   "https://drive.google.com/file/d/1ofq-OZH2lIBNVz7-DupjTKu2UtklS6Lx/view?usp=sharing";
@@ -101,13 +105,14 @@ export function Hero() {
 
         {/* Name */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
         >
-          <span className="gradient-text">Abdullah Kaisar Fardin</span>
+          <TextReveal text="Abdullah Kaisar Fardin" className="gradient-text" />
         </motion.h1>
+
 
         {/* Handle */}
         <motion.p
@@ -165,111 +170,135 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap items-center gap-3 sm:gap-4"
         >
-          <a href="#projects" className={cn(buttonVariants({ size: "lg" }), "neon-glow transition-transform duration-200 hover:-translate-y-0.5")}> 
-            View Projects
-          </a>
-          <a
-            href={resumeViewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "lg" }) + " transition-transform duration-200 hover:-translate-y-0.5"}
-          >
-            <FileText className="mr-2 h-4 w-4" />
-            View Resume
-          </a>
-          <a
-            href={resumeDownloadUrl}
-            className={buttonVariants({ variant: "secondary", size: "lg" }) + " transition-transform duration-200 hover:-translate-y-0.5"}
-            download="Abdullah_Kaisar_Fardin_Resume.pdf"
-          >
-            <Download className="mr-2 h-4 w-4" />
-            Download Resume
-          </a>
-          <a
-            href="#contact"
-            className={buttonVariants({ variant: "outline", size: "lg" }) + " transition-transform duration-200 hover:-translate-y-0.5"}
-          >
-            Get in Touch
-          </a>
-          <div className="flex items-center gap-2">
+          <Magnetic>
+            <a href="#projects" className={cn(buttonVariants({ size: "lg" }), "neon-glow")}> 
+              View Projects
+            </a>
+          </Magnetic>
+          
+          <Magnetic>
             <a
-              href="https://github.com/kaisarfardin6620"
+              href={resumeViewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              className={buttonVariants({ variant: "ghost", size: "icon" })}
+              className={buttonVariants({ variant: "outline", size: "lg" })}
             >
-              <GithubIcon className="h-5 w-5" />
+              <FileText className="mr-2 h-4 w-4" />
+              View Resume
             </a>
+          </Magnetic>
+
+          <Magnetic>
             <a
-              href="https://www.linkedin.com/in/abdullah-kaisar-fardin"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className={buttonVariants({ variant: "ghost", size: "icon" })}
+              href={resumeDownloadUrl}
+              className={buttonVariants({ variant: "secondary", size: "lg" })}
+              download="Abdullah_Kaisar_Fardin_Resume.pdf"
             >
-              <LinkedinIcon className="h-5 w-5" />
+              <Download className="mr-2 h-4 w-4" />
+              Download Resume
             </a>
+          </Magnetic>
+
+          <Magnetic>
             <a
-              href="mailto:kaisarfardin128@gmail.com"
-              aria-label="Email"
-              className={buttonVariants({ variant: "ghost", size: "icon" })}
+              href="#contact"
+              className={buttonVariants({ variant: "outline", size: "lg" })}
             >
-              <MailIcon className="h-5 w-5" />
+              Get in Touch
             </a>
+          </Magnetic>
+
+          <div className="flex items-center gap-2 ml-1">
+            <Magnetic strength={0.4}>
+              <a
+                href="https://github.com/kaisarfardin6620"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className={buttonVariants({ variant: "ghost", size: "icon" })}
+              >
+                <GithubIcon className="h-5 w-5" />
+              </a>
+            </Magnetic>
+            
+            <Magnetic strength={0.4}>
+              <a
+                href="https://www.linkedin.com/in/abdullah-kaisar-fardin"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className={buttonVariants({ variant: "ghost", size: "icon" })}
+              >
+                <LinkedinIcon className="h-5 w-5" />
+              </a>
+            </Magnetic>
+
+            <Magnetic strength={0.4}>
+              <a
+                href="mailto:kaisarfardin128@gmail.com"
+                aria-label="Email"
+                className={buttonVariants({ variant: "ghost", size: "icon" })}
+              >
+                <MailIcon className="h-5 w-5" />
+              </a>
+            </Magnetic>
           </div>
         </motion.div>
+
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="rounded-2xl border border-border/60 bg-card/55 p-6 backdrop-blur-xl"
         >
-          <p className="mb-4 font-mono text-xs tracking-wider text-primary uppercase">
-            case-study snapshot
-          </p>
-
-          <div className="space-y-3">
-            <div className="rounded-xl border border-border/60 bg-background/60 p-4">
-              <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
-                <Zap className="h-4 w-4 text-primary" />
-                Real-time Delivery
-              </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Built streaming AI backends using WebSockets and async workers for low-latency user interactions.
+          <MagicBorder className="h-full">
+            <div className="p-6">
+              <p className="mb-4 font-mono text-xs tracking-wider text-primary uppercase">
+                case-study snapshot
               </p>
-            </div>
 
-            <div className="rounded-xl border border-border/60 bg-background/60 p-4">
-              <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
-                <ShieldCheck className="h-4 w-4 text-primary" />
-                Reliability First
-              </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Prioritized resilient architecture, queue-based processing, and robust API safeguards.
-              </p>
-            </div>
+              <div className="space-y-3">
+                <div className="rounded-xl border border-border/60 bg-background/60 p-4">
+                  <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
+                    <Zap className="h-4 w-4 text-primary" />
+                    Real-time Delivery
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Built streaming AI backends using WebSockets and async workers for low-latency user interactions.
+                  </p>
+                </div>
 
-            <div className="rounded-xl border border-border/60 bg-background/60 p-4">
-              <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
-                <ChartNoAxesCombined className="h-4 w-4 text-primary" />
-                Outcome Focus
+                <div className="rounded-xl border border-border/60 bg-background/60 p-4">
+                  <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
+                    <ShieldCheck className="h-4 w-4 text-primary" />
+                    Reliability First
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Prioritized resilient architecture, queue-based processing, and robust API safeguards.
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-border/60 bg-background/60 p-4">
+                  <div className="mb-1 flex items-center gap-2 text-sm font-semibold">
+                    <ChartNoAxesCombined className="h-4 w-4 text-primary" />
+                    Outcome Focus
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Delivered production features with clear impact across retrieval quality, concurrency, and user experience.
+                  </p>
+                </div>
               </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Delivered production features with clear impact across retrieval quality, concurrency, and user experience.
-              </p>
             </div>
-          </div>
+          </MagicBorder>
         </motion.div>
+
 
         {/* Scroll indicator */}
         <motion.div

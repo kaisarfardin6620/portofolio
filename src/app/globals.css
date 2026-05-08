@@ -578,3 +578,34 @@ main > section:not(:last-of-type)::after {
   --lab-accent-text: #fff7ed;
   --lab-pattern: radial-gradient(circle at 5% 10%, #fb923c24, transparent 30%);
 }
+
+
+/* Luminous Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.75 0.18 195), 
+    oklch(0.70 0.15 300)
+  );
+  border-radius: 20px;
+  border: 3px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.80 0.20 195), 
+    oklch(0.75 0.18 300)
+  );
+}
+
+

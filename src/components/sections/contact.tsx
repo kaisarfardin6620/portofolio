@@ -7,6 +7,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/motion/fade-in";
+import { MagicBorder } from "@/components/motion/magic-border";
+import { Magnetic } from "@/components/motion/magnetic";
 
 type FormStatus =
   | { type: "idle"; message: "" }
@@ -88,21 +90,27 @@ export function Contact() {
         />
 
         <FadeIn>
-          <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
-            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-cyan-500/20 via-primary/20 to-violet-600/20 opacity-80" />
-            <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
+          <MagicBorder>
+            <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300">
+              <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-cyan-500/20 via-primary/20 to-violet-600/20 opacity-80" />
+              <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
 
-            <CardContent className="relative space-y-7 p-8">
+              <CardContent className="relative space-y-7 p-8">
               <div className="space-y-4 text-center">
                 <a
                   href="mailto:kaisarfardin128@gmail.com"
                   className="group inline-flex items-center gap-2 text-lg font-mono text-primary transition-colors hover:text-foreground"
                 >
-                  <Mail className="h-5 w-5" />
-                  kaisarfardin128@gmail.com
-                  <ArrowUpRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <Magnetic strength={0.2}>
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-5 w-5" />
+                      kaisarfardin128@gmail.com
+                      <ArrowUpRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </div>
+                  </Magnetic>
                 </a>
               </div>
+
 
               <form onSubmit={handleSubmit} className="space-y-3 text-left">
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -134,13 +142,16 @@ export function Contact() {
                 />
 
                 <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <button
-                    type="submit"
-                    disabled={isSending}
-                    className={buttonVariants({ size: "lg" })}
-                  >
-                    {isSending ? "Sending..." : "Send Message"}
-                  </button>
+                  <Magnetic>
+                    <button
+                      type="submit"
+                      disabled={isSending}
+                      className={buttonVariants({ size: "lg" })}
+                    >
+                      {isSending ? "Sending..." : "Send Message"}
+                    </button>
+                  </Magnetic>
+
 
                   {status.type !== "idle" && (
                     <p
@@ -155,27 +166,32 @@ export function Contact() {
               </form>
 
               <div className="flex justify-center gap-4">
-                <a
-                  href="https://github.com/kaisarfardin6620"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({ variant: "outline", size: "lg" })}
-                >
-                  <GithubIcon className="mr-2 h-4 w-4" />
-                  GitHub
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/abdullah-kaisar-fardin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({ variant: "outline", size: "lg" })}
-                >
-                  <LinkedinIcon className="mr-2 h-4 w-4" />
-                  LinkedIn
-                </a>
+                <Magnetic>
+                  <a
+                    href="https://github.com/kaisarfardin6620"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonVariants({ variant: "outline", size: "lg" })}
+                  >
+                    <GithubIcon className="mr-2 h-4 w-4" />
+                    GitHub
+                  </a>
+                </Magnetic>
+                <Magnetic>
+                  <a
+                    href="https://www.linkedin.com/in/abdullah-kaisar-fardin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonVariants({ variant: "outline", size: "lg" })}
+                  >
+                    <LinkedinIcon className="mr-2 h-4 w-4" />
+                    LinkedIn
+                  </a>
+                </Magnetic>
               </div>
             </CardContent>
           </Card>
+          </MagicBorder>
         </FadeIn>
       </div>
     </section>

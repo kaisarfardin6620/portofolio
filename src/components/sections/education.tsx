@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { education } from "@/data/education";
 import { StaggerChildren, staggerItem } from "@/components/motion/stagger-children";
+import { MagicBorder } from "@/components/motion/magic-border";
 
 export function Education() {
   return (
@@ -19,15 +20,16 @@ export function Education() {
 
         <StaggerChildren className="grid gap-6 md:grid-cols-2">
           {education.map((edu, i) => (
-            <motion.div key={`${edu.degree}-${i}`} variants={staggerItem}>
-              <Card className="floating-glass-card group relative h-full overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
-                <div
-                  className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-r ${
-                    i % 2 === 0
-                      ? "from-cyan-500/20 to-blue-600/20"
-                      : "from-violet-500/20 to-fuchsia-600/20"
-                  } opacity-80`}
-                />
+            <motion.div key={`${edu.degree}-${i}`} variants={staggerItem} className="h-full w-full">
+              <MagicBorder className="h-full w-full">
+                <Card className="floating-glass-card group relative h-full overflow-hidden transition-transform duration-300">
+                  <div
+                    className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-r ${
+                      i % 2 === 0
+                        ? "from-cyan-500/20 to-blue-600/20"
+                        : "from-violet-500/20 to-fuchsia-600/20"
+                    } opacity-80`}
+                  />
                 <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
 
                 <CardContent className="relative p-6">
@@ -49,7 +51,8 @@ export function Education() {
                     </p>
                   )}
                 </CardContent>
-              </Card>
+                </Card>
+              </MagicBorder>
             </motion.div>
           ))}
         </StaggerChildren>

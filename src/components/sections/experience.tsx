@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { TechBadge } from "@/components/ui/tech-badge";
 import { experiences } from "@/data/experience";
+import { MagicBorder } from "@/components/motion/magic-border";
 
 export function Experience() {
   return (
@@ -46,14 +47,15 @@ export function Experience() {
 
                 {/* Card */}
                 <div className="md:w-[calc(50%-2rem)]">
-                  <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
-                    <div
-                      className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-r ${
-                        i % 2 === 0
-                          ? "from-cyan-500/20 to-blue-600/20"
-                          : "from-violet-500/20 to-fuchsia-600/20"
-                      } opacity-80`}
-                    />
+                  <MagicBorder className="h-full w-full">
+                    <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300">
+                      <div
+                        className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-r ${
+                          i % 2 === 0
+                            ? "from-cyan-500/20 to-blue-600/20"
+                            : "from-violet-500/20 to-fuchsia-600/20"
+                        } opacity-80`}
+                      />
                     <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
 
                     <CardContent className="relative p-6">
@@ -76,8 +78,7 @@ export function Experience() {
                         ))}
                       </div>
                     </CardContent>
-                  </Card>
-                </div>
+                  </Card>                  </MagicBorder>                </div>
 
                 {/* Spacer for alternating layout */}
                 <div className="hidden md:block md:w-[calc(50%-2rem)]" />

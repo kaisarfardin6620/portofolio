@@ -15,6 +15,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/motion/fade-in";
 import { skillCategories } from "@/data/skills";
 import { Badge } from "@/components/ui/badge";
+import { MagicBorder } from "@/components/motion/magic-border";
 
 const iconMap: Record<string, React.ElementType> = {
   Brain,
@@ -97,16 +98,17 @@ export function Skills() {
                 delay={catIndex * 0.15}
                 className={isSingleCardInLastRow ? "md:col-start-2" : undefined}
               >
-                <Card className="floating-glass-card group relative h-full overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
-                  <div
-                    className={`pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r ${cat.gradient} opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-15`}
-                  />
+                  <MagicBorder className="h-full">
+                    <Card className="floating-glass-card group relative h-full overflow-hidden transition-transform duration-300">
+                      <div
+                        className={`pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r ${cat.gradient} opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-15`}
+                      />
 
-                  <CardContent className="relative flex h-full flex-col p-6">
-                    <div className="mb-5 flex items-start gap-3">
-                      <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 bg-background/60">
-                        <Icon className="h-5 w-5 text-primary" />
-                      </div>
+                      <CardContent className="relative flex h-full flex-col p-6">
+                        <div className="mb-5 flex items-start gap-3">
+                          <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 bg-background/60">
+                            <Icon className="h-5 w-5 text-primary" />
+                          </div>
                       <div className="space-y-1">
                         <h3 className="text-[17px] font-semibold tracking-tight">
                           {cat.category}
@@ -191,6 +193,7 @@ export function Skills() {
                     </div>
                   </CardContent>
                 </Card>
+                </MagicBorder>
               </FadeIn>
             );
           })}

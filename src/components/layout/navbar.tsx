@@ -5,6 +5,8 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { Magnetic } from "@/components/motion/magnetic";
+
 
 const links = [
   { label: "About", href: "#about" },
@@ -58,9 +60,12 @@ export function Navbar() {
       </div>
 
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-2xl border border-border/60 bg-background/70 px-4 shadow-lg shadow-black/5 backdrop-blur-xl md:h-16 md:px-6">
-        <a href="#" className="font-mono text-sm font-bold tracking-wider">
-          <span className="gradient-text">kaisar</span>
-        </a>
+        <Magnetic strength={0.3}>
+          <a href="#" className="font-mono text-sm font-bold tracking-wider">
+            <span className="gradient-text">kaisar</span>
+          </a>
+        </Magnetic>
+
 
         {/* Desktop */}
         <div className="hidden items-center gap-1 rounded-full border border-border/60 bg-secondary/40 p-1 md:flex">
@@ -87,8 +92,13 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <ThemeToggle />
+          <Magnetic strength={0.4}>
+            <div>
+              <ThemeToggle />
+            </div>
+          </Magnetic>
         </div>
+
 
         <div className="flex items-center gap-1 md:hidden">
           <ThemeToggle />
