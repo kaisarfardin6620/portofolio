@@ -54,8 +54,14 @@ export function Architecture() {
                 className="absolute flex flex-col items-center gap-3"
               >
                 <div className={`flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/5 backdrop-blur-md ${node.color} shadow-xl`}>
-                  <node.icon className="h-8 w-8" />
+                  {(() => {
+                    const IconComponent = node.icon as React.ComponentType<any>;
+                    return <IconComponent className="h-8 w-8" />;
+                  })()}
                 </div>
+
+
+
                 <span className="font-mono text-xs font-medium tracking-tight text-muted-foreground">
                   {node.label}
                 </span>
