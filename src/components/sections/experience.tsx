@@ -81,7 +81,9 @@ export function Experience() {
                         ))}
                       </div>
                     </CardContent>
-                  </Card>                  </MagicBorder>                </div>
+                  </Card>
+                  </MagicBorder>
+                </div>
 
                 {/* Spacer for alternating layout */}
                 <div className="hidden md:block md:w-[calc(50%-2rem)]" />

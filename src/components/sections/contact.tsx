@@ -42,6 +42,11 @@ export function Contact() {
       return;
     }
 
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setStatus({ type: "error", message: "Please fill in all fields." });
+      return;
+    }
+
     try {
       setIsSending(true);
       setStatus({ type: "idle", message: "" });

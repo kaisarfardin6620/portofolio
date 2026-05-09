@@ -19,8 +19,10 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem(storageKey);
-    const initialTheme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : getSystemTheme();
+    const initialTheme =
+      storedTheme === "light" || storedTheme === "dark" ? storedTheme : getSystemTheme();
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(initialTheme);
     document.documentElement.classList.toggle("dark", initialTheme === "dark");
     document.documentElement.style.colorScheme = initialTheme;
@@ -29,8 +31,7 @@ export function ThemeToggle() {
 
   const toggleTheme = (event: React.MouseEvent) => {
     const isAppearanceTransition =
-      // @ts-ignore
-      document.startViewTransition &&
+      "startViewTransition" in document &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (!isAppearanceTransition) {
@@ -48,17 +49,12 @@ export function ThemeToggle() {
     document.documentElement.style.setProperty("--ripple-x", `${x}px`);
     document.documentElement.style.setProperty("--ripple-y", `${y}px`);
 
-    // @ts-ignore
-    const transition = document.startViewTransition(() => {
+    (document as any).startViewTransition(() => {
       const nextTheme: ThemeMode = theme === "dark" ? "light" : "dark";
       setTheme(nextTheme);
       window.localStorage.setItem(storageKey, nextTheme);
       document.documentElement.classList.toggle("dark", nextTheme === "dark");
       document.documentElement.style.colorScheme = nextTheme;
-    });
-
-    transition.ready.then(() => {
-      // Custom duration or timing can be added here if needed via animation API
     });
   };
 
@@ -68,10 +64,16 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggleTheme}
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
-      className={cn("transition-transform duration-200 hover:-translate-y-0.5 relative z-[2147483647]", !mounted && "opacity-0")}
+      className={cn(
+        "relative z-[2147483647] transition-transform duration-200 hover:-translate-y-0.5",
+        !mounted && "opacity-0",
+      )}
     >
-      {theme === "dark" ? <SunMedium className="h-5 w-5" /> : <MoonStar className="h-5 w-5" />}
+      {theme === "dark" ? (
+        <SunMedium className="h-5 w-5" />
+      ) : (
+        <MoonStar className="h-5 w-5" />
+      )}
     </Button>
-
   );
 }

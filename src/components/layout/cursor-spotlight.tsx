@@ -18,6 +18,11 @@ export function CursorSpotlight() {
   const ySlow = useSpring(mouseY, springConfigSlow);
 
   useEffect(() => {
+    // Do not attach mouse listeners on touch devices
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);

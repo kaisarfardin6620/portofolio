@@ -73,7 +73,7 @@ export function DesignLabPreview() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-8">
           <p className="mb-2 font-mono text-xs uppercase tracking-wider text-primary">
-            // design lab
+            {"// design lab"}
           </p>
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Portfolio Redesign Preview

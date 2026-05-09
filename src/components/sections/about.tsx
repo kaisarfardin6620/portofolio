@@ -31,7 +31,7 @@ export function About() {
               <div className="relative overflow-hidden rounded-2xl border border-border/50 neon-glow transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1607706189992-eae578626c86?w=600&h=600&fit=crop&crop=center"
-                  alt="Aaabad Touk"
+                  alt="Abdullah Kaisar Fardin"
                   width={600}
                   height={600}
                   className="w-full aspect-square object-cover"

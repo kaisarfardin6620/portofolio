@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { motion, useMotionValue, useSpring, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useRef } from "react";
 
 import {
@@ -14,7 +15,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { TechBadge } from "@/components/ui/tech-badge";
-import { StaggerChildren, staggerItem } from "@/components/motion/stagger-children";
+import { staggerItem } from "@/components/motion/stagger-children";
 import { projects } from "@/data/projects";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -35,19 +36,17 @@ const iconMap: Record<string, React.ElementType> = {
 function ProjectCard({
   project,
   featured = false,
-  index,
   progress,
   range,
   targetScale,
 }: {
   project: (typeof projects)[number];
   featured?: boolean;
-  index: number;
-  progress: any;
+  progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
 }) {
-  const Icon = (iconMap[project.icon] || Code) as React.ComponentType<any>;
+  const Icon = (iconMap[project.icon] || Code) as React.ComponentType<{ className?: string }>;
   const hasLinks = Boolean(
     project.links?.live ||
       project.links?.repo ||
@@ -243,7 +242,7 @@ export function Projects() {
   });
 
   return (
-    <section id="projects" className="section-surface overflow-visible py-24 px-6 md:py-32" ref={container}>
+    <section id="projects" className="section-surface relative overflow-visible px-6 py-24 md:py-32" ref={container}>
       <div className="mx-auto max-w-5xl overflow-visible">
         <SectionHeading
           label="// case studies"
@@ -266,9 +265,8 @@ export function Projects() {
                 <ProjectCard 
                   project={project} 
                   featured={project.featured} 
-                  index={i} 
                   progress={scrollYProgress} 
-                  range={[i * 0.25, 1]} 
+                  range={[i / projects.length, 1]} 
                   targetScale={targetScale}
                 />
               </div>

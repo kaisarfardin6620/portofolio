@@ -9,7 +9,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Magnetic } from "@/components/motion/magnetic";
 import { TextReveal } from "@/components/motion/text-reveal";
-import { Hero3D } from "./hero-3d";
 import dynamic from "next/dynamic";
 
 // Dynamically import to avoid SSR issues with Three.js
@@ -37,8 +36,6 @@ export function Hero() {
 
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 600], [0, 90]);
-  const orbOneY = useTransform(scrollY, [0, 600], [0, -50]);
-  const orbTwoY = useTransform(scrollY, [0, 600], [0, 60]);
 
   useEffect(() => {
     const timer = setInterval(() => {

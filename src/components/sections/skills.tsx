@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import {
   Brain,
@@ -86,14 +87,15 @@ export function Skills() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {skillCategories.map((cat, catIndex) => {
-            const Icon = (iconMap[cat.icon] || Brain) as React.ComponentType<any>;
-            const RowIcon = (rowIconMap[cat.icon] || Sparkles) as React.ComponentType<any>;
+            const Icon = (iconMap[cat.icon] || Brain) as React.ComponentType<{ className?: string }>;
+            const RowIcon = (rowIconMap[cat.icon] || Sparkles) as React.ComponentType<{ className?: string }>;
             
-            // Bento logic: AI (0) spans 2, Backend (1) spans 1, Data (2) spans 1, MLOps (3) spans 2
+            // Robust Bento logic: First and last items span 2 cols IF there are exactly 4 items,
+            // otherwise fallback to default md:col-span-1 to prevent grid breakages.
             const spanClass = 
-              catIndex === 0 ? "md:col-span-2" :
-              catIndex === 3 ? "md:col-span-2" :
-              "md:col-span-1";
+              skillCategories.length === 4 
+                ? (catIndex === 0 || catIndex === 3 ? "md:col-span-2" : "md:col-span-1")
+                : "md:col-span-1";
 
             return (
               <FadeIn
@@ -122,7 +124,7 @@ export function Skills() {
                       </div>
                     </div>
 
-                    <div className={`mt-1 grid gap-x-6 gap-y-3.5 ${catIndex === 0 || catIndex === 3 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
+                    <div className={`mt-1 grid gap-x-6 gap-y-3.5 ${spanClass.includes("col-span-2") ? "sm:grid-cols-2" : "grid-cols-1"}`}>
                       {cat.skills.map((skill, skillIndex) => (
                         <motion.div
                           key={skill.name}
